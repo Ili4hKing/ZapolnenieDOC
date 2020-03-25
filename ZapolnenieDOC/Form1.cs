@@ -22,7 +22,14 @@ namespace ZapolnenieDOC
 
             }
         }
+        public struct Person
+        {
+            public string FIO
+            { get; set; }
+            public string DateBirdhsday
+            { get; set; }
 
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Word.Application wordApp = new Word.Application();// Создаём объект приложения
@@ -32,6 +39,7 @@ namespace ZapolnenieDOC
 
             using (TexnikymBDEntities db = new TexnikymBDEntities())
             {
+                
                 var Bd_911 = db.Бд_911;
                 var I_913 = db.И_913;
                 var Ip_93 = db.Ип_93;
@@ -41,25 +49,41 @@ namespace ZapolnenieDOC
                 var Ol_94 = db.Ол_94;
                 var Tv_914 = db.Тв_914;
                 var Students = db.Студенты2;
-                //var tex = db;
+
+              
+                
+                
                 foreach (Студенты2 tl in Students)
                 {
-                    
+                    List<Person> persons = new List<Person>();
+                    string tlFio = tl.ФИО;
+                    string[] b = tlFio.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string o = b[0] + " " + b[1] + " " + b[2];
+
                     var name = db.Бд_911.Where(c =>c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
                     if (name != null)
                     {
                         string sPersons = name.ФИО;
                         string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                         string p = a[0] + " " + a[1] + " " + a[2];
-                    
-                    var customer = db.Бд_911.Where(c => tl.ФИО == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
+
+                        
+
+                        var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
                     if (customer != null)
                     {
-                        if (customer.Паспорт == "")
+                        if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
                         {
                             customer.Паспорт = tl.ПаспортныеДанные;
-                            
-                        }
+
+                                Person person = new Person
+                                {
+                                    FIO = customer.ФИО,
+                                    DateBirdhsday = customer.ДатаРождения
+                                    
+                                };
+                                persons.Add(person);
+                            }
                     }
                     }
                     //db.SaveChanges();
@@ -75,7 +99,7 @@ namespace ZapolnenieDOC
 
                     //        }
 
-                   
+
 
 
                     //    }
@@ -153,11 +177,17 @@ namespace ZapolnenieDOC
 
 
 
-
-
+                    if (persons.Count >0) {
+                        foreach (Person p in persons)
+                        {
+                            listBox1.Items.Add("ФИО "+p.FIO +" Дата рождения "+p.DateBirdhsday );
+                        }
+                    }
                 }
 
                 db.SaveChanges();
+               
+                
 
             }
         }
@@ -177,7 +207,7 @@ namespace ZapolnenieDOC
 
 
             //List<Person> persons = new List<Person>();
-            string sPersons = "Гумбатова-Тестова  Светлана Габиловна Перевод в гр Ол-94 с 26.09.19 пр. №58-К/д от 25.09.19";
+            string sPersons = "Ахматжанова   Салтанат   Эркинбековна";
             string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             //for (int i = 0; i < a.Length;)
             //{
