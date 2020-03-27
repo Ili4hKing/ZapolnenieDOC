@@ -15,7 +15,7 @@ namespace ZapolnenieDOC
     public partial class Студенты2
     {
         public string ФИО { get; set; }
-        public string ДатаРождения { get; set; }
+        public Nullable<System.DateTime> ДатаРождения { get; set; }
         public string ПаспортныеДанные { get; set; }
         public string МедицинскийПолис { get; set; }
         public string Снилс { get; set; }

@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище TexnikymBDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище TexnikymBDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Бд-911">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ДатаРождения" Type="datetime" Nullable="false" />
           <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
           <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
           <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
@@ -103,7 +103,7 @@
             <PropertyRef Name="ФИО" />
           </Key>
           <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" />
+          <Property Name="ДатаРождения" Type="datetime" />
           <Property Name="ПаспортныеДанные" Type="nvarchar" MaxLength="250" />
           <Property Name="МедицинскийПолис" Type="nvarchar" MaxLength="100" />
           <Property Name="Снилс" Type="nvarchar" MaxLength="80" />
@@ -127,10 +127,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ДатаРождения" Type="datetime" Nullable="false" />
           <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="80" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
+          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="250" />
           <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -156,8 +156,7 @@
     FROM [dbo].[Студенты2] AS [Студенты2]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TexnikymBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -166,7 +165,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ДатаРождения" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
@@ -270,10 +269,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ДатаРождения" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Телефон" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -283,7 +282,7 @@
             <PropertyRef Name="ФИО" />
           </Key>
           <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ДатаРождения" Type="DateTime" ConcurrencyMode="None" Precision="3" />
           <Property Name="ПаспортныеДанные" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="МедицинскийПолис" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Снилс" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />

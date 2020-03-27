@@ -15,7 +15,7 @@ namespace ZapolnenieDOC
     public partial class Бд_911
     {
         public string ФИО { get; set; }
-        public string ДатаРождения { get; set; }
+        public System.DateTime ДатаРождения { get; set; }
         public string МестоРождения { get; set; }
         public string АдресПоРегистрации { get; set; }
         public string Телефон { get; set; }
