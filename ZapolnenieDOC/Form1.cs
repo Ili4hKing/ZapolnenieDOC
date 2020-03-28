@@ -9,11 +9,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
+using Microsoft.Office.Interop.Excel;
+using Application = Microsoft.Office.Interop.Excel.Application;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+using DataTable = System.Data.DataTable;
 
 namespace ZapolnenieDOC
 {
     public partial class Form1 : Form
     {
+        private Application application;
+        private Workbook workBook;
+        private Worksheet worksheet;
+
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -30,11 +43,22 @@ namespace ZapolnenieDOC
             { get; set; }
 
         }
+        public struct ДанныеПоТаблицеШаблоныГруппы
+        {
+            public string ФИО { get; set; }
+            public System.DateTime ДатаРождения { get; set; }
+            public string МестоРождения { get; set; }
+            public string АдресПоРегистрации { get; set; }
+            public string Телефон { get; set; }
+            public string Паспорт { get; set; }
+            public string Email { get; set; }
+            public int id { get; set; }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            Word.Application wordApp = new Word.Application();// Создаём объект приложения
+            //Word.Application wordApp = new Word.Application();// Создаём объект приложения
 
-            Word.Document Word = new Word.Document();
+            //Word.Document Word = new Word.Document();
 
 
             using (TexnikymBDEntities db = new TexnikymBDEntities())
@@ -48,302 +72,275 @@ namespace ZapolnenieDOC
                 //var Me_912 = db.Мэ_912;
                 //var Ol_94 = db.Ол_94;
                 //var Tv_914 = db.Тв_914;
-                var Students = db.Студенты2;
+                var Shablons = db.ШаблонГруппы;
+                var Student = db.Студенты2;
 
 
 
-
-                foreach (Студенты2 tl in Students)
+                foreach (ШаблонГруппы tl in Shablons)
                 {
                     List<Person> persons = new List<Person>();
                     string tlFio = tl.ФИО;
                     string[] b = tlFio.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     string o = b[0] + " " + b[1] + " " + b[2];
 
-                    //var name = db.И_913.Where(c =>c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (name != null)
-                    //{
-                    //    string sPersons = name.ФИО;
-                    //    string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    //    string p = a[0] + " " + a[1] + " " + a[2];
-
-                        
-
-                    //    var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (customer != null)
-                    //{
-                    //    if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                    //    {
-                    //        customer.Паспорт = tl.ПаспортныеДанные;
-
-                    //            Person person = new Person
-                    //            {
-                    //                FIO = customer.ФИО,
-                    //                DateBirdhsday = customer.ДатаРождения
-                                    
-                    //            };
-                    //            persons.Add(person);
-                    //        }
-                    //}
-                    //}
-                    //var n = db.Ип_93.Where(c => c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (n != null)
-                    //{
-                    //    string sPersons = n.ФИО;
-                    //    string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    //    string p = a[0] + " " + a[1] + " " + a[2];
-
-
-
-                    //    var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //    if (customer != null)
-                    //    {
-                    //        if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                    //        {
-                    //            customer.Паспорт = tl.ПаспортныеДанные;
-
-                    //            Person person = new Person
-                    //            {
-                    //                FIO = customer.ФИО,
-                    //                DateBirdhsday = customer.ДатаРождения
-
-                    //            };
-                    //            persons.Add(person);
-                    //        }
-                    //    }
-                    //}
-                    //var na = db.М_92.Where(c => c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (na != null)
-                    //{
-                    //    string sPersons = na.ФИО;
-                    //    string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    //    string p = a[0] + " " + a[1] + " " + a[2];
-
-
-
-                    //    var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //    if (customer != null)
-                    //    {
-                    //        if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                    //        {
-                    //            customer.Паспорт = tl.ПаспортныеДанные;
-
-                    //            Person person = new Person
-                    //            {
-                    //                FIO = customer.ФИО,
-                    //                DateBirdhsday = customer.ДатаРождения
-
-                    //            };
-                    //            persons.Add(person);
-                    //        }
-                    //    }
-                    //}
-                    //var nam = db.Мэ_912.Where(c => c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (nam != null)
-                    //{
-                    //    string sPersons = nam.ФИО;
-                    //    string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    //    string p = a[0] + " " + a[1] + " " + a[2];
-
-
-
-                    //    var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //    if (customer != null)
-                    //    {
-                    //        if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                    //        {
-                    //            customer.Паспорт = tl.ПаспортныеДанные;
-
-                    //            Person person = new Person
-                    //            {
-                    //                FIO = customer.ФИО,
-                    //                DateBirdhsday = customer.ДатаРождения
-
-                    //            };
-                    //            persons.Add(person);
-                    //        }
-                    //    }
-                    //}
-                    //var name1 = db.Ол_94.Where(c => c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (name1 != null)
-                    //{
-                    //    string sPersons = name1.ФИО;
-                    //    string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    //    string p = a[0] + " " + a[1] + " " + a[2];
-
-
-
-                    //    var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //    if (customer != null)
-                    //    {
-                    //        if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                    //        {
-                    //            customer.Паспорт = tl.ПаспортныеДанные;
-
-                    //            Person person = new Person
-                    //            {
-                    //                FIO = customer.ФИО,
-                    //                DateBirdhsday = customer.ДатаРождения
-
-                    //            };
-                    //            persons.Add(person);
-                    //        }
-                    //    }
-                    //}
-                    //var name2 = db.Тв_914.Where(c => c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (name2 != null)
-                    //{
-                    //    string sPersons = name2.ФИО;
-                    //    string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    //    string p = a[0] + " " + a[1] + " " + a[2];
-
-
-
-                    //    var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //    if (customer != null)
-                    //    {
-                    //        if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                    //        {
-                    //            customer.Паспорт = tl.ПаспортныеДанные;
-
-                    //            Person person = new Person
-                    //            {
-                    //                FIO = customer.ФИО,
-                    //                DateBirdhsday = customer.ДатаРождения
-
-                    //            };
-                    //            persons.Add(person);
-                    //        }
-                    //    }
-                    //}
-                    //var name3 = db.Мц_91.Where(c => c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (name3 != null)
-                    //{
-                    //    string sPersons = name3.ФИО;
-                    //    string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    //    string p = a[0] + " " + a[1] + " " + a[2];
-
-
-
-                    //    var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //    if (customer != null)
-                    //    {
-                    //        if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                    //        {
-                    //            customer.Паспорт = tl.ПаспортныеДанные;
-
-                    //            Person person = new Person
-                    //            {
-                    //                FIO = customer.ФИО,
-                    //                DateBirdhsday = customer.ДатаРождения
-
-                    //            };
-                    //            persons.Add(person);
-                    //        }
-                    //    }
-                    //}
-                    //var name4 = db.Бд_911.Where(c => c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //if (name4 != null)
-                    //{
-                    //    string sPersons = name4.ФИО;
-                    //    string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    //    string p = a[0] + " " + a[1] + " " + a[2];
-
-
-
-                    //    var customer = db.Бд_911.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    //    if (customer != null)
-                    //    {
-                    //        if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                    //        {
-                    //            customer.Паспорт = tl.ПаспортныеДанные;
-
-                    //            Person person = new Person
-                    //            {
-                    //                FIO = customer.ФИО,
-                    //                DateBirdhsday = customer.ДатаРождения
-
-                    //            };
-                    //            persons.Add(person);
-                    //        }
-                    //    }
-                    //}
-
-                    var name4 = db.ШаблонГруппы.Where(c => c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                    if (name4 != null)
+                    foreach (Студенты2 ii in Student)
                     {
-                        string sPersons = name4.ФИО;
-                        string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                        string p = a[0] + " " + a[1] + " " + a[2];
+                        string iiFio = ii.ФИО;
+                        string[] c = iiFio.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        string y = c[0] + " " + c[1] + " " + c[2];
 
-
-
-                        var customer = db.ШаблонГруппы.Where(c => o == p && c.ДатаРождения == tl.ДатаРождения).FirstOrDefault();
-                        if (customer != null)
+                        if (o == y && tl.ДатаРождения == ii.ДатаРождения)
                         {
-                            if (p == "Куденикина Маргарита Дмитриевна")
+                            if (string.IsNullOrEmpty(tl.Паспорт) || tl.Паспорт == " ")
                             {
-                                MessageBox.Show(p);
-                            }
-                            if (string.IsNullOrEmpty(customer.Паспорт) || customer.Паспорт == " ")
-                            {
-                                customer.Паспорт = tl.ПаспортныеДанные;
+                                tl.Паспорт = ii.ПаспортныеДанные;
 
                                 Person person = new Person
                                 {
-                                    FIO = customer.ФИО,
-                                    DateBirdhsday = customer.ДатаРождения
+                                    FIO = ii.ФИО,
+                                    DateBirdhsday = ii.ДатаРождения
 
                                 };
                                 persons.Add(person);
                             }
                         }
+
+
                     }
 
 
 
 
-                    if (persons.Count >0) {
+
+
+                    if (persons.Count > 0)
+                    {
                         foreach (Person p in persons)
                         {
-                            listBox1.Items.Add("ФИО "+p.FIO +" Дата рождения "+p.DateBirdhsday );
+                            listBox1.Items.Add("ФИО " + p.FIO + " Дата рождения " + p.DateBirdhsday);
                         }
-                       
+
                     }
                 }
 
                 db.SaveChanges();
-               
-                
+
+
 
             }
         }
-       
+
+
+
+
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //string а  = "Гумбатова  Светлана Габиловна Перевод в гр Ол-94 с 26.09.19 пр. №58-К/д от 25.09.19";
+            
+            string yourtext = "18.02.2003";
+            DateTime d = Convert.ToDateTime(yourtext);
+            //DateTime.TryParseExact(yourtext, "0:MM/dd/yy H:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out d);
+
+           
+           
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            object missing = Type.Missing;
+
+            using (TexnikymBDEntities db = new TexnikymBDEntities())
+            {
+                var Shablons = db.ШаблонГруппы;
+                int t = 0;
+                int i = 0;
+                foreach (ШаблонГруппы pp in Shablons)
+                {
+                    t++;
 
 
-            //List<Person> persons = new List<Person>();
-            string sPersons = "Ахматжанова   Салтанат   Эркинбековна";
-            string[] a = sPersons.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            //for (int i = 0; i < a.Length;)
-            //{
-            //    Person person = new Person
-            //    {
-            //        Famaly = a[i++],
-            //        Name = a[i++],
-            //        Sername = a[i++]
-            //    };
-            //    persons.Add(person);
-            //}
-            string p = a[0] + " " + a[1] + " " + a[2];
-            MessageBox.Show(p);
-            //foreach (Person p in persons)
-            //    MessageBox.Show(string.Format("Фамилия: {0}\nИмя: {1}\nОтчество: {2}\n________________",
-            //        p.Famaly, p.Name, p.Sername));
 
+                }
+
+                // Открываем приложение
+                application = new Application
+
+
+
+                {
+                    DisplayAlerts = false
+                };
+
+                //object template2 = "E:\\Shablone.xlsx";
+                //application.Workbooks.Add(template2);
+
+
+                // Файл шаблона
+                const string template = "E:\\Shablone.xlsx";
+
+                // Открываем книгу
+                workBook = application.Workbooks.Open(template);
+
+                // Получаем активную таблицу
+                worksheet = workBook.ActiveSheet as Worksheet;
+
+                // Записываем данные
+                worksheet.Range["A1"].Value = "ФИО";
+                worksheet.Range["B1"].Value = "Дата рождения";
+                worksheet.Range["C1"].Value = "Место рождения";
+                worksheet.Range["D1"].Value = "Адрес по регистрации";
+                worksheet.Range["E1"].Value = "Телефон";
+                worksheet.Range["F1"].Value = "Паспорт";
+                worksheet.Range["G1"].Value = "Email";
+                worksheet.Range["H1"].Value = "id";
+
+                foreach (ШаблонГруппы pp in Shablons)
+                {
+                    //t++;
+
+                    if (i < t)
+                    {
+                        i++;
+                        worksheet.Cells[i + 1, 1].Value = pp.ФИО;
+                        worksheet.Cells[i + 1, 2].Value = pp.ДатаРождения;
+                        worksheet.Cells[i + 1, 3].Value = pp.МестоРождения;
+                        worksheet.Cells[i + 1, 4].Value = pp.АдресПоРегистрации;
+                        worksheet.Cells[i + 1, 5].Value = pp.Телефон;
+                        worksheet.Cells[i + 1, 6].Value = pp.Паспорт;
+                        worksheet.Cells[i + 1, 7].Value = pp.Email;
+                        worksheet.Cells[i + 1, 8].Value = pp.id;
+                    }
+                }
+                // Показываем приложение
+                application.Visible = true;
+                TopMost = true;
+                object template3 = "E:\\Shablone" + ".xlsx";
+                string savedFileName = "E:\\НеотсортированныеГруппы.xlsx";
+                workBook.SaveAs(Path.Combine(Environment.CurrentDirectory, savedFileName));
+
+                //workBook.Close();
+
+                //buttonCloseExcel.Enabled = true;
+
+                CloseExcel();
+
+            }
+        }
+        private void CloseExcel()
+        {
+            if (application != null)
+            {
+                int excelProcessId = -1;
+                GetWindowThreadProcessId(application.Hwnd, ref excelProcessId);
+
+                Marshal.ReleaseComObject(worksheet);
+                workBook.Close();
+                Marshal.ReleaseComObject(workBook);
+                application.Quit();
+                Marshal.ReleaseComObject(application);
+
+                application = null;
+                // Прибиваем висящий процесс
+                try
+                {
+                    Process process = Process.GetProcessById(excelProcessId);
+                    process.Kill();
+                }
+                finally { }
+            }
+        }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern uint GetWindowThreadProcessId(int hWnd, ref int lpdwProcessId);
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (TexnikymBDEntities db = new TexnikymBDEntities())
+            {
+                object missing = Type.Missing;
+                
+
+                Object Pa = textBox1.Text; // Путь к шаблону 
+
+                Word.Application wordApp = new Word.Application();// Создаём объект приложения
+
+                //Word.Document wordDoc = new Word.Document();
+                wordApp.Documents.Open(ref Pa,ref missing,ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing, ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing, ref missing, ref missing);
+
+                Word.Document document = wordApp.ActiveDocument;
+                Word.Table table = document.Tables[1];
+                Word.Table table2 = document.Tables[2];// вторая таблица, придумать как их всех циклом отработать Доделать!"!!!"!!
+
+                //string[] row = new string[table.Columns.Count];
+                List<ШаблонГруппы> ShabloniGr = new List<ШаблонГруппы>();
+                if (table2.Rows.Count > 0 && table2.Columns.Count > 0)
+                { }//тест2
+
+
+
+                    if (table.Rows.Count > 0 && table.Columns.Count > 0)
+                    {
+                        //List headers = new List();
+                        //DataTable dataTable = new DataTable();
+                        for (int i = 0; i < table.Columns.Count; i++)
+                        {
+                            //dataTable.Columns.Add();
+                            listBox1.Items.Add(table.Cell(1, i + 1).Range.Text.Trim('a', 'r', 'n', 't'));
+                        }
+                        for (int i = 0; i < table.Rows.Count - 1; i++)
+                        {
+                            string[] row = new string[table.Columns.Count];
+                            for (int j = 0; j < table.Columns.Count; j++)
+                                row[j] = table.Cell(i + 2, j + 1).Range.Text.Trim('a', 'r', 'n', 't').Replace("\r", " ").Replace("\a", "");
+
+                        string dateConv = row[2].Replace(" ", "").Replace("\a","");
+                        DateTime d = Convert.ToDateTime(dateConv);
+
+                        ShabloniGr.Add(new ШаблонГруппы
+                            {
+                                ФИО = row[1],
+                                ДатаРождения = d,
+                                МестоРождения = row[3],
+                                АдресПоРегистрации = row[4],
+                                Телефон = row[5],
+                                Паспорт = row[6],
+                                Email = row[7]
+                            });
+
+
+
+
+                        }
+                        //dataGridView1.DataSource = dataTable;
+                        //for (int i = 0; i < headers.Count; i++)
+                        //    dataGridView1.Columns[i].HeaderText = headers[i];
+                    }
+
+                
+                db.ШаблонГруппы.AddRange(ShabloniGr);
+                db.SaveChanges();
+
+            }
+
+        }
+
+       
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "MS Word 2007 (*.docx)|*.docx|MS Word 2003 (*.doc)|*.doc";
+            dialog.Title = "Выберите документ для загрузки данных";
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                textBox1.Text = dialog.FileName;
+            }
         }
     }
 }

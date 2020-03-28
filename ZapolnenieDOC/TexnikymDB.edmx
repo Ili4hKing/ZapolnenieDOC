@@ -282,7 +282,7 @@
             <PropertyRef Name="ФИО" />
           </Key>
           <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="DateTime" ConcurrencyMode="None" Precision="3" />
+          <Property Name="ДатаРождения" Type="DateTime" ConcurrencyMode="None" Precision="3" Nullable="false" />
           <Property Name="ПаспортныеДанные" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="МедицинскийПолис" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Снилс" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
