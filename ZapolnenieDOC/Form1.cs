@@ -15,6 +15,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using DataTable = System.Data.DataTable;
+using System.Data.Entity;
 
 namespace ZapolnenieDOC
 {
@@ -159,6 +160,9 @@ namespace ZapolnenieDOC
                 db.SaveChanges();
 
 
+                db.ШаблонГруппы.Load();
+
+                dataGridView3.DataSource = db.ШаблонГруппы.Local.ToBindingList();
 
             }
         }
@@ -172,15 +176,17 @@ namespace ZapolnenieDOC
         private void button2_Click(object sender, EventArgs e)
         {
 
-            string yourtext = "18.02. 2003";
-            string tlFio = yourtext;
-            string[] b = tlFio.Split(new char[] { ' ', '.', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            string o = b[0] + "." + b[1] + "." + b[2];
-            //string text = yourtext.Replace(" ", ".");
-            DateTime d = Convert.ToDateTime(o);
-            //DateTime.TryParseExact(yourtext, "0:MM/dd/yy H:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out d);
+            //string yourtext = "18.02. 2003";
+            //string tlFio = yourtext;
+            //string[] b = tlFio.Split(new char[] { ' ', '.', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            //string o = b[0] + "." + b[1] + "." + b[2];
+            ////string text = yourtext.Replace(" ", ".");
+            //DateTime d = Convert.ToDateTime(o);
+            ////DateTime.TryParseExact(yourtext, "0:MM/dd/yy H:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out d);
 
-
+            this.Hide();
+            Form2 rr = new Form2();
+            rr.Show();
 
 
         }
@@ -307,7 +313,7 @@ namespace ZapolnenieDOC
                 int countTable = document.Tables.Count;
 
 
-                for (int y = 1; y < countTable; y++)
+                for (int y = 1; y <= countTable; y++)
                 {
 
 
@@ -320,7 +326,7 @@ namespace ZapolnenieDOC
 
                         for (int i = 0; i < table.Columns.Count; i++)
                         {
-                            progressBar1.Maximum = (countTable - 1) * table.Columns.Count;
+                            progressBar1.Maximum = (countTable ) * table.Columns.Count;
                             progressBar1.Value++;
 
 
@@ -329,7 +335,7 @@ namespace ZapolnenieDOC
                         {
                             string[] row = new string[table.Columns.Count];
                             for (int j = 0; j < table.Columns.Count; j++)
-                                row[j] = table.Cell(i + 2, j + 1).Range.Text.Trim('a', 'r', 'n', 't').Replace("\r", " ").Replace("\a", "");
+                                row[j] = table.Cell(i + 2, j + 1).Range.Text.Trim('a', 'r', 'n', 't').Replace("\r", " ").Replace("\a", "").Replace("\t", "");
 
 
 
@@ -361,6 +367,7 @@ namespace ZapolnenieDOC
 
 
                         }
+                     
 
                     }
                     db.ШаблонГруппы.AddRange(ShabloniGr);
@@ -368,6 +375,12 @@ namespace ZapolnenieDOC
 
                     
                 }
+                wordApp.ActiveDocument.Close();
+                wordApp.Quit();
+
+                db.ШаблонГруппы.Load();
+
+                dataGridView1.DataSource = db.ШаблонГруппы.Local.ToBindingList();
 
                 MessageBox.Show("Данные помещены");
 
@@ -410,7 +423,7 @@ namespace ZapolnenieDOC
 
                 int countTable = document.Tables.Count;
 
-                for (int y = 1; y < countTable; y++)
+                for (int y = 1; y <= countTable; y++)
                 {
 
                     List<Студенты2> ShabloniGr = new List<Студенты2>();
@@ -421,7 +434,7 @@ namespace ZapolnenieDOC
 
                         for (int i = 0; i < table.Columns.Count; i++)
                         {
-                            progressBar2.Maximum = (countTable - 1) * table.Columns.Count;
+                            progressBar2.Maximum = (countTable) * table.Columns.Count;
                             progressBar2.Value++;
 
 
@@ -430,7 +443,7 @@ namespace ZapolnenieDOC
                         {
                             string[] row = new string[table.Columns.Count];
                             for (int j = 0; j < table.Columns.Count; j++)
-                                row[j] = table.Cell(i + 2, j + 1).Range.Text.Trim('a', 'r', 'n', 't').Replace("\r", " ").Replace("\a", "");
+                                row[j] = table.Cell(i + 2, j + 1).Range.Text.Trim('a', 'r', 'n', 't').Replace("\r", " ").Replace("\a", "").Replace("\t", "");
 
 
 
@@ -472,6 +485,10 @@ namespace ZapolnenieDOC
 
                 wordApp.ActiveDocument.Close();
                 wordApp.Quit();
+
+                db.Студенты2.Load();
+
+                dataGridView2.DataSource = db.Студенты2.Local.ToBindingList();
 
                 MessageBox.Show("Данные помещены");
 
@@ -533,6 +550,11 @@ namespace ZapolnenieDOC
             {
                 textBox3.Text = DirDialog.SelectedPath;
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
