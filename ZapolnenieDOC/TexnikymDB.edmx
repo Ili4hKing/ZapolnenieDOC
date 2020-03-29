@@ -5,97 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище TexnikymBDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Бд-911">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="datetime" Nullable="false" />
-          <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
-          <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="И-913">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" />
-          <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
-          <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Ип-93">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
-          <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="М-92">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
-          <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Мц-91">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
-          <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Мэ-912">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
-          <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Ол-94">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
-          <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
         <EntityType Name="Студенты2">
           <Key>
             <PropertyRef Name="id" />
@@ -106,19 +15,6 @@
           <Property Name="МедицинскийПолис" Type="nvarchar" MaxLength="100" />
           <Property Name="Снилс" Type="nvarchar" MaxLength="80" />
           <Property Name="ИНН" Type="nvarchar" MaxLength="80" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Тв-914">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" />
-          <Property Name="МестоРождения" Type="nvarchar" MaxLength="150" />
-          <Property Name="АдресПоРегистрации" Type="nvarchar" MaxLength="250" />
-          <Property Name="Телефон" Type="nvarchar" MaxLength="70" />
-          <Property Name="Паспорт" Type="nvarchar" MaxLength="250" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="ШаблонГруппы">
@@ -148,15 +44,7 @@
           <Property Name="ИНН" Type="nvarchar" MaxLength="80" />
         </EntityType>
         <EntityContainer Name="Хранилище TexnikymBDModelContainer">
-          <EntitySet Name="Бд-911" EntityType="Self.Бд-911" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="И-913" EntityType="Self.И-913" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ип-93" EntityType="Self.Ип-93" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="М-92" EntityType="Self.М-92" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Мц-91" EntityType="Self.Мц-91" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Мэ-912" EntityType="Self.Мэ-912" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ол-94" EntityType="Self.Ол-94" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Студенты2" EntityType="Self.Студенты2" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Тв-914" EntityType="Self.Тв-914" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ШаблонГруппы" EntityType="Self.ШаблонГруппы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ШаблонСтудентов" EntityType="Self.ШаблонСтудентов" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -173,110 +61,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TexnikymBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Бд_911">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="И_913">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Ип_93">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="М_92">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Мц_91">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Мэ_912">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Ол_94">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Тв_914">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="МестоРождения" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="АдресПоРегистрации" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Телефон" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Паспорт" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
         <EntityType Name="ШаблонГруппы">
           <Key>
             <PropertyRef Name="id" />
@@ -303,14 +87,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityContainer Name="TexnikymBDEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Бд_911" EntityType="Self.Бд_911" />
-          <EntitySet Name="И_913" EntityType="Self.И_913" />
-          <EntitySet Name="Ип_93" EntityType="Self.Ип_93" />
-          <EntitySet Name="М_92" EntityType="Self.М_92" />
-          <EntitySet Name="Мц_91" EntityType="Self.Мц_91" />
-          <EntitySet Name="Мэ_912" EntityType="Self.Мэ_912" />
-          <EntitySet Name="Ол_94" EntityType="Self.Ол_94" />
-          <EntitySet Name="Тв_914" EntityType="Self.Тв_914" />
           <EntitySet Name="ШаблонГруппы" EntityType="Self.ШаблонГруппы" />
           <EntitySet Name="Студенты2" EntityType="Self.Студенты2" />
           <EntitySet Name="ШаблонСтудентов" EntityType="TexnikymBDModel.ШаблонСтудентов" />
@@ -332,118 +108,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище TexnikymBDModelContainer" CdmEntityContainer="TexnikymBDEntities">
-          <EntitySetMapping Name="Бд_911">
-            <EntityTypeMapping TypeName="TexnikymBDModel.Бд_911">
-              <MappingFragment StoreEntitySet="Бд-911">
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
-                <ScalarProperty Name="МестоРождения" ColumnName="МестоРождения" />
-                <ScalarProperty Name="АдресПоРегистрации" ColumnName="АдресПоРегистрации" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="И_913">
-            <EntityTypeMapping TypeName="TexnikymBDModel.И_913">
-              <MappingFragment StoreEntitySet="И-913">
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
-                <ScalarProperty Name="МестоРождения" ColumnName="МестоРождения" />
-                <ScalarProperty Name="АдресПоРегистрации" ColumnName="АдресПоРегистрации" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ип_93">
-            <EntityTypeMapping TypeName="TexnikymBDModel.Ип_93">
-              <MappingFragment StoreEntitySet="Ип-93">
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
-                <ScalarProperty Name="МестоРождения" ColumnName="МестоРождения" />
-                <ScalarProperty Name="АдресПоРегистрации" ColumnName="АдресПоРегистрации" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="М_92">
-            <EntityTypeMapping TypeName="TexnikymBDModel.М_92">
-              <MappingFragment StoreEntitySet="М-92">
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
-                <ScalarProperty Name="МестоРождения" ColumnName="МестоРождения" />
-                <ScalarProperty Name="АдресПоРегистрации" ColumnName="АдресПоРегистрации" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Мц_91">
-            <EntityTypeMapping TypeName="TexnikymBDModel.Мц_91">
-              <MappingFragment StoreEntitySet="Мц-91">
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
-                <ScalarProperty Name="МестоРождения" ColumnName="МестоРождения" />
-                <ScalarProperty Name="АдресПоРегистрации" ColumnName="АдресПоРегистрации" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Мэ_912">
-            <EntityTypeMapping TypeName="TexnikymBDModel.Мэ_912">
-              <MappingFragment StoreEntitySet="Мэ-912">
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
-                <ScalarProperty Name="МестоРождения" ColumnName="МестоРождения" />
-                <ScalarProperty Name="АдресПоРегистрации" ColumnName="АдресПоРегистрации" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ол_94">
-            <EntityTypeMapping TypeName="TexnikymBDModel.Ол_94">
-              <MappingFragment StoreEntitySet="Ол-94">
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
-                <ScalarProperty Name="МестоРождения" ColumnName="МестоРождения" />
-                <ScalarProperty Name="АдресПоРегистрации" ColumnName="АдресПоРегистрации" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Тв_914">
-            <EntityTypeMapping TypeName="TexnikymBDModel.Тв_914">
-              <MappingFragment StoreEntitySet="Тв-914">
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
-                <ScalarProperty Name="МестоРождения" ColumnName="МестоРождения" />
-                <ScalarProperty Name="АдресПоРегистрации" ColumnName="АдресПоРегистрации" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ШаблонГруппы">
             <EntityTypeMapping TypeName="TexnikymBDModel.ШаблонГруппы">
               <MappingFragment StoreEntitySet="ШаблонГруппы">

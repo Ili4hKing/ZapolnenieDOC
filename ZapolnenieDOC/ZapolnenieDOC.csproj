@@ -87,31 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TexnikymDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Бд_911.cs">
-      <DependentUpon>TexnikymDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="И_913.cs">
-      <DependentUpon>TexnikymDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ип_93.cs">
-      <DependentUpon>TexnikymDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="М_92.cs">
-      <DependentUpon>TexnikymDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Мц_91.cs">
-      <DependentUpon>TexnikymDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Мэ_912.cs">
-      <DependentUpon>TexnikymDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ол_94.cs">
-      <DependentUpon>TexnikymDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Студенты2.cs">
-      <DependentUpon>TexnikymDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Тв_914.cs">
       <DependentUpon>TexnikymDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ШаблонГруппы.cs">

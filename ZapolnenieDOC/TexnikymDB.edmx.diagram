@@ -5,17 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b512ca9204bd487e97776bd734456d31" Name="Diagram1">
-        <EntityTypeShape EntityType="TexnikymBDModel.Бд_911" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.И_913" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.Ип_93" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.М_92" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.Мц_91" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.Мэ_912" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.Ол_94" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.Тв_914" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.ШаблонГруппы" Width="1.5" PointX="3.125" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.Студенты2" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TexnikymBDModel.ШаблонСтудентов" Width="1.5" PointX="5.375" PointY="8.75" />
+        <EntityTypeShape EntityType="TexnikymBDModel.ШаблонГруппы" Width="1.5" PointX="3.125" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TexnikymBDModel.Студенты2" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TexnikymBDModel.ШаблонСтудентов" Width="1.5" PointX="5.375" PointY="4.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
