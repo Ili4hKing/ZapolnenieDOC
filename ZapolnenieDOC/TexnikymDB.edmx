@@ -96,11 +96,9 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "TexnikymBD.dbo.Студенты2" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Студенты2">
           <Key>
-            <PropertyRef Name="ФИО" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="ДатаРождения" Type="datetime" />
@@ -108,6 +106,7 @@
           <Property Name="МедицинскийПолис" Type="nvarchar" MaxLength="100" />
           <Property Name="Снилс" Type="nvarchar" MaxLength="80" />
           <Property Name="ИНН" Type="nvarchar" MaxLength="80" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Тв-914">
           <Key>
@@ -135,6 +134,19 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "TexnikymBD.dbo.ШаблонСтудентов" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ШаблонСтудентов">
+          <Key>
+            <PropertyRef Name="ФИО" />
+          </Key>
+          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" />
+          <Property Name="ПаспортныеДанные" Type="nvarchar" MaxLength="250" />
+          <Property Name="МедицинскийПолис" Type="nvarchar" MaxLength="100" />
+          <Property Name="Снилс" Type="nvarchar" MaxLength="80" />
+          <Property Name="ИНН" Type="nvarchar" MaxLength="80" />
+        </EntityType>
         <EntityContainer Name="Хранилище TexnikymBDModelContainer">
           <EntitySet Name="Бд-911" EntityType="Self.Бд-911" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="И-913" EntityType="Self.И-913" Schema="dbo" store:Type="Tables" />
@@ -143,17 +155,18 @@
           <EntitySet Name="Мц-91" EntityType="Self.Мц-91" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Мэ-912" EntityType="Self.Мэ-912" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ол-94" EntityType="Self.Ол-94" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Студенты2" EntityType="Self.Студенты2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Тв-914" EntityType="Self.Тв-914" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ШаблонГруппы" EntityType="Self.ШаблонГруппы" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Студенты2" EntityType="Self.Студенты2" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="ШаблонСтудентов" EntityType="Self.ШаблонСтудентов" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Студенты2].[ФИО] AS [ФИО], 
-    [Студенты2].[ДатаРождения] AS [ДатаРождения], 
-    [Студенты2].[ПаспортныеДанные] AS [ПаспортныеДанные], 
-    [Студенты2].[МедицинскийПолис] AS [МедицинскийПолис], 
-    [Студенты2].[Снилс] AS [Снилс], 
-    [Студенты2].[ИНН] AS [ИНН]
-    FROM [dbo].[Студенты2] AS [Студенты2]</DefiningQuery>
+    [ШаблонСтудентов].[ФИО] AS [ФИО], 
+    [ШаблонСтудентов].[ДатаРождения] AS [ДатаРождения], 
+    [ШаблонСтудентов].[ПаспортныеДанные] AS [ПаспортныеДанные], 
+    [ШаблонСтудентов].[МедицинскийПолис] AS [МедицинскийПолис], 
+    [ШаблонСтудентов].[Снилс] AS [Снилс], 
+    [ШаблонСтудентов].[ИНН] AS [ИНН]
+    FROM [dbo].[ШаблонСтудентов] AS [ШаблонСтудентов]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -279,7 +292,7 @@
         </EntityType>
         <EntityType Name="Студенты2">
           <Key>
-            <PropertyRef Name="ФИО" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ДатаРождения" Type="DateTime" ConcurrencyMode="None" Precision="3" Nullable="false" />
@@ -287,6 +300,7 @@
           <Property Name="МедицинскийПолис" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Снилс" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="ИНН" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityContainer Name="TexnikymBDEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Бд_911" EntityType="Self.Бд_911" />
@@ -299,7 +313,19 @@
           <EntitySet Name="Тв_914" EntityType="Self.Тв_914" />
           <EntitySet Name="ШаблонГруппы" EntityType="Self.ШаблонГруппы" />
           <EntitySet Name="Студенты2" EntityType="Self.Студенты2" />
+          <EntitySet Name="ШаблонСтудентов" EntityType="TexnikymBDModel.ШаблонСтудентов" />
         </EntityContainer>
+        <EntityType Name="ШаблонСтудентов">
+          <Key>
+            <PropertyRef Name="ФИО" />
+          </Key>
+          <Property Name="ФИО" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ПаспортныеДанные" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="МедицинскийПолис" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Снилс" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ИНН" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -435,12 +461,25 @@
           <EntitySetMapping Name="Студенты2">
             <EntityTypeMapping TypeName="TexnikymBDModel.Студенты2">
               <MappingFragment StoreEntitySet="Студенты2">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ФИО" ColumnName="ФИО" />
                 <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
                 <ScalarProperty Name="ПаспортныеДанные" ColumnName="ПаспортныеДанные" />
                 <ScalarProperty Name="МедицинскийПолис" ColumnName="МедицинскийПолис" />
                 <ScalarProperty Name="Снилс" ColumnName="Снилс" />
                 <ScalarProperty Name="ИНН" ColumnName="ИНН" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ШаблонСтудентов">
+            <EntityTypeMapping TypeName="TexnikymBDModel.ШаблонСтудентов">
+              <MappingFragment StoreEntitySet="ШаблонСтудентов">
+                <ScalarProperty Name="ИНН" ColumnName="ИНН" />
+                <ScalarProperty Name="Снилс" ColumnName="Снилс" />
+                <ScalarProperty Name="МедицинскийПолис" ColumnName="МедицинскийПолис" />
+                <ScalarProperty Name="ПаспортныеДанные" ColumnName="ПаспортныеДанные" />
+                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

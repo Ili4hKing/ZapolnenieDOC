@@ -35,5 +35,6 @@ namespace ZapolnenieDOC
         public virtual DbSet<Тв_914> Тв_914 { get; set; }
         public virtual DbSet<ШаблонГруппы> ШаблонГруппы { get; set; }
         public virtual DbSet<Студенты2> Студенты2 { get; set; }
+        public virtual DbSet<ШаблонСтудентов> ШаблонСтудентов { get; set; }
     }
 }

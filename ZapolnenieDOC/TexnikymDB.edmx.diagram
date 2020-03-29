@@ -15,6 +15,7 @@
         <EntityTypeShape EntityType="TexnikymBDModel.Тв_914" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TexnikymBDModel.ШаблонГруппы" Width="1.5" PointX="3.125" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TexnikymBDModel.Студенты2" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TexnikymBDModel.ШаблонСтудентов" Width="1.5" PointX="5.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

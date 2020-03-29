@@ -12,14 +12,13 @@ namespace ZapolnenieDOC
     using System;
     using System.Collections.Generic;
     
-    public partial class Студенты2
+    public partial class ШаблонСтудентов
     {
         public string ФИО { get; set; }
-        public System.DateTime ДатаРождения { get; set; }
+        public string ДатаРождения { get; set; }
         public string ПаспортныеДанные { get; set; }
         public string МедицинскийПолис { get; set; }
         public string Снилс { get; set; }
         public string ИНН { get; set; }
-        public int id { get; set; }
     }
 }

@@ -111,6 +111,9 @@
     <Compile Include="ШаблонГруппы.cs">
       <DependentUpon>TexnikymDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ШаблонСтудентов.cs">
+      <DependentUpon>TexnikymDB.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

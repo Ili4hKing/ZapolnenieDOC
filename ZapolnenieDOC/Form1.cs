@@ -43,6 +43,16 @@ namespace ZapolnenieDOC
             { get; set; }
 
         }
+
+        public struct NekorektData
+        {
+            public string FIO
+            { get; set; }
+            public DateTime DateBirdhsday
+            { get; set; }
+
+        }
+
         public struct ДанныеПоТаблицеШаблоныГруппы
         {
             public string ФИО { get; set; }
@@ -56,22 +66,13 @@ namespace ZapolnenieDOC
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //Word.Application wordApp = new Word.Application();// Создаём объект приложения
 
-            //Word.Document Word = new Word.Document();
 
 
             using (TexnikymBDEntities db = new TexnikymBDEntities())
             {
 
-                //var Bd_911 = db.Бд_911;
-                //var I_913 = db.И_913;
-                //var Ip_93 = db.Ип_93;
-                //var M_92 = db.М_92;
-                //var Mc_91 = db.Мц_91;
-                //var Me_912 = db.Мэ_912;
-                //var Ol_94 = db.Ол_94;
-                //var Tv_914 = db.Тв_914;
+
                 var Shablons = db.ШаблонГруппы;
                 var Student = db.Студенты2;
 
@@ -80,6 +81,8 @@ namespace ZapolnenieDOC
                 foreach (ШаблонГруппы tl in Shablons)
                 {
                     List<Person> persons = new List<Person>();
+                    
+
                     string tlFio = tl.ФИО;
                     string[] b = tlFio.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     string o = b[0] + " " + b[1] + " " + b[2];
@@ -103,12 +106,17 @@ namespace ZapolnenieDOC
 
                                 };
                                 persons.Add(person);
+
+                               
+
+
+
                             }
                         }
 
 
                     }
-
+                   
 
 
 
@@ -119,6 +127,30 @@ namespace ZapolnenieDOC
                         foreach (Person p in persons)
                         {
                             listBox1.Items.Add("ФИО " + p.FIO + " Дата рождения " + p.DateBirdhsday);
+                        }
+
+                    }
+                    
+                }
+
+                foreach (ШаблонГруппы tl in Shablons)
+                {
+                    List<NekorektData> nekorektDatas = new List<NekorektData>();
+
+                    if (string.IsNullOrEmpty(tl.Паспорт) || tl.Паспорт == " ")
+                    {
+                        NekorektData nekorektData = new NekorektData
+                        {
+                            FIO = tl.ФИО,
+                            DateBirdhsday = tl.ДатаРождения
+                        };
+                        nekorektDatas.Add(nekorektData);
+                    }
+                    if (nekorektDatas.Count > 0)
+                    {
+                        foreach (NekorektData l in nekorektDatas)
+                        {
+                            listBox2.Items.Add("ФИО " + l.FIO + " Дата рождения " + l.DateBirdhsday);
                         }
 
                     }
@@ -139,13 +171,17 @@ namespace ZapolnenieDOC
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            string yourtext = "18.02.2003";
-            DateTime d = Convert.ToDateTime(yourtext);
+
+            string yourtext = "18.02. 2003";
+            string tlFio = yourtext;
+            string[] b = tlFio.Split(new char[] { ' ', '.', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string o = b[0] + "." + b[1] + "." + b[2];
+            //string text = yourtext.Replace(" ", ".");
+            DateTime d = Convert.ToDateTime(o);
             //DateTime.TryParseExact(yourtext, "0:MM/dd/yy H:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out d);
 
-           
-           
+
+
 
         }
 
@@ -174,9 +210,6 @@ namespace ZapolnenieDOC
                 {
                     DisplayAlerts = false
                 };
-
-                //object template2 = "E:\\Shablone.xlsx";
-                //application.Workbooks.Add(template2);
 
 
                 // Файл шаблона
@@ -219,15 +252,11 @@ namespace ZapolnenieDOC
                 application.Visible = true;
                 TopMost = true;
                 object template3 = "E:\\Shablone" + ".xlsx";
-                string savedFileName = "E:\\НеотсортированныеГруппы.xlsx";
+                string savedFileName = textBox3.Text+"\\ШаблоныГруппВыгрузкаССервера.xlsx"; //Добавить возможность выбора куда сохранять
                 workBook.SaveAs(Path.Combine(Environment.CurrentDirectory, savedFileName));
 
-                //workBook.Close();
-
-                //buttonCloseExcel.Enabled = true;
-
                 CloseExcel();
-
+                MessageBox.Show("Файл сохранен путь: "+savedFileName);
             }
         }
         private void CloseExcel()
@@ -262,36 +291,39 @@ namespace ZapolnenieDOC
             using (TexnikymBDEntities db = new TexnikymBDEntities())
             {
                 object missing = Type.Missing;
-                
+
 
                 Object Pa = textBox1.Text; // Путь к шаблону 
 
                 Word.Application wordApp = new Word.Application();// Создаём объект приложения
 
-                //Word.Document wordDoc = new Word.Document();
-                wordApp.Documents.Open(ref Pa,ref missing,ref missing, ref missing, ref missing,
+
+                wordApp.Documents.Open(ref Pa, ref missing, true, ref missing, ref missing,
                     ref missing, ref missing, ref missing, ref missing, ref missing, ref missing,
-                    ref missing, ref missing, ref missing, ref missing, ref missing);
+                    ref missing, ref missing, ref missing, ref missing, ref missing);// доделать чтобы не вылетало сообщение
 
                 Word.Document document = wordApp.ActiveDocument;
-                Word.Table table = document.Tables[1];
-                Word.Table table2 = document.Tables[2];// вторая таблица, придумать как их всех циклом отработать Доделать!"!!!"!!
 
-                //string[] row = new string[table.Columns.Count];
-                List<ШаблонГруппы> ShabloniGr = new List<ШаблонГруппы>();
-                if (table2.Rows.Count > 0 && table2.Columns.Count > 0)
-                { }//тест2
+                int countTable = document.Tables.Count;
 
 
+                for (int y = 1; y < countTable; y++)
+                {
+
+
+
+                    List<ШаблонГруппы> ShabloniGr = new List<ШаблонГруппы>();
+                    Word.Table table = document.Tables[y];
 
                     if (table.Rows.Count > 0 && table.Columns.Count > 0)
                     {
-                        //List headers = new List();
-                        //DataTable dataTable = new DataTable();
+
                         for (int i = 0; i < table.Columns.Count; i++)
                         {
-                            //dataTable.Columns.Add();
-                            listBox1.Items.Add(table.Cell(1, i + 1).Range.Text.Trim('a', 'r', 'n', 't'));
+                            progressBar1.Maximum = (countTable - 1) * table.Columns.Count;
+                            progressBar1.Value++;
+
+
                         }
                         for (int i = 0; i < table.Rows.Count - 1; i++)
                         {
@@ -299,10 +331,22 @@ namespace ZapolnenieDOC
                             for (int j = 0; j < table.Columns.Count; j++)
                                 row[j] = table.Cell(i + 2, j + 1).Range.Text.Trim('a', 'r', 'n', 't').Replace("\r", " ").Replace("\a", "");
 
-                        string dateConv = row[2].Replace(" ", "").Replace("\a","");
-                        DateTime d = Convert.ToDateTime(dateConv);
 
-                        ShabloniGr.Add(new ШаблонГруппы
+
+                            DateTime d;
+                            string dateConv = row[2].Replace("\a", "");
+                            string tlFio = dateConv;
+                            string[] b = tlFio.Split(new char[] { ' ', '.', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                            string o = b[0] + "." + b[1] + "." + b[2];
+
+                            if (DateTime.TryParse(o, out d))
+
+                                d = Convert.ToDateTime(o);
+                            else
+                                o = "2000-01-01 00:00:00.000";// Если дата введена не коретно то вводиться это число
+                            d = Convert.ToDateTime(o);
+
+                            ShabloniGr.Add(new ШаблонГруппы
                             {
                                 ФИО = row[1],
                                 ДатаРождения = d,
@@ -317,20 +361,23 @@ namespace ZapolnenieDOC
 
 
                         }
-                        //dataGridView1.DataSource = dataTable;
-                        //for (int i = 0; i < headers.Count; i++)
-                        //    dataGridView1.Columns[i].HeaderText = headers[i];
-                    }
 
-                
-                db.ШаблонГруппы.AddRange(ShabloniGr);
-                db.SaveChanges();
+                    }
+                    db.ШаблонГруппы.AddRange(ShabloniGr);
+                    db.SaveChanges();
+
+                    
+                }
+
+                MessageBox.Show("Данные помещены");
+
+
 
             }
 
         }
 
-       
+
 
         private void textBox1_Click(object sender, EventArgs e)
         {
@@ -340,6 +387,151 @@ namespace ZapolnenieDOC
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 textBox1.Text = dialog.FileName;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            using (TexnikymBDEntities db = new TexnikymBDEntities())
+            {
+                object missing = Type.Missing;
+
+
+                Object Pa = textBox2.Text; // Путь к шаблону 
+
+                Word.Application wordApp = new Word.Application();// Создаём объект приложения
+
+
+                wordApp.Documents.Open(ref Pa, ref missing, true, ref missing, ref missing,
+                    ref missing, ref missing, ref missing, ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing, ref missing, ref missing);
+
+                Word.Document document = wordApp.ActiveDocument;
+
+                int countTable = document.Tables.Count;
+
+                for (int y = 1; y < countTable; y++)
+                {
+
+                    List<Студенты2> ShabloniGr = new List<Студенты2>();
+                    Word.Table table = document.Tables[y];
+
+                    if (table.Rows.Count > 0 && table.Columns.Count > 0)
+                    {
+
+                        for (int i = 0; i < table.Columns.Count; i++)
+                        {
+                            progressBar2.Maximum = (countTable - 1) * table.Columns.Count;
+                            progressBar2.Value++;
+
+
+                        }
+                        for (int i = 0; i < table.Rows.Count - 1; i++)
+                        {
+                            string[] row = new string[table.Columns.Count];
+                            for (int j = 0; j < table.Columns.Count; j++)
+                                row[j] = table.Cell(i + 2, j + 1).Range.Text.Trim('a', 'r', 'n', 't').Replace("\r", " ").Replace("\a", "");
+
+
+
+                            DateTime d;
+                            string dateConv = row[2].Replace("\a", "");
+                            string tlFio = dateConv;
+                            string[] b = tlFio.Split(new char[] { ' ', '.', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                            string o = b[0] + "." + b[1] + "." + b[2];
+
+                            if (DateTime.TryParse(o, out d))
+
+                                d = Convert.ToDateTime(o);
+                            else
+                                o = "2000-01-01 00:00:00.000";// Если дата введена не коретно то вводиться это число 2000-01-01 00:00:00.000
+                            d = Convert.ToDateTime(o);
+
+                            ShabloniGr.Add(new Студенты2
+                            {
+                                ФИО = row[1],
+                                ДатаРождения = d,
+                                ПаспортныеДанные = row[3],
+                                МедицинскийПолис = row[4],
+                                Снилс = row[5],
+                                ИНН = row[6]
+
+                            });
+
+
+
+
+                        }
+
+                    }
+                    db.Студенты2.AddRange(ShabloniGr);
+                    db.SaveChanges();
+
+                    
+                }
+
+                wordApp.ActiveDocument.Close();
+                wordApp.Quit();
+
+                MessageBox.Show("Данные помещены");
+
+            }
+        }
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "MS Word 2007 (*.docx)|*.docx|MS Word 2003 (*.doc)|*.doc";
+            dialog.Title = "Выберите документ для загрузки данных";
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                textBox2.Text = dialog.FileName;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+
+        {
+            using (TexnikymBDEntities db = new TexnikymBDEntities())
+            {
+                var ShabloneGr = db.ШаблонГруппы;
+                var Students = db.Студенты2;
+                foreach (Студенты2 pl in Students)
+                {
+
+                    db.Студенты2.Remove(pl);
+
+
+                }
+
+
+                foreach (ШаблонГруппы rl in ShabloneGr)
+                {
+
+                    db.ШаблонГруппы.Remove(rl);
+
+
+                }
+
+                db.SaveChanges();
+
+                MessageBox.Show("Данные удалены");
+
+            }
+
+
+
+        }
+
+        private void textBox3_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog DirDialog = new FolderBrowserDialog();
+            DirDialog.Description = "Выбор директории";
+            DirDialog.SelectedPath = @"C:\";
+
+            if (DirDialog.ShowDialog() == DialogResult.OK)
+            {
+                textBox3.Text = DirDialog.SelectedPath;
             }
         }
     }
